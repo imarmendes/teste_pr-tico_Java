@@ -80,4 +80,11 @@ public class Hr {
 		
 		System.out.printf("%.2f", total.floatValue());
 	}
+	
+	public static void printHowManySalarys(ArrayList<Employee> employeeList) {
+		for (Employee employee : employeeList) {
+			System.out.printf("O %s ganha %.2f salários minimos\n", employee.getName(), (employee.getSalary().floatValue() / 1212.0));							
+		}
+
+	}
 }

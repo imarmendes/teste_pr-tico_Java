@@ -42,5 +42,7 @@ public class Main {
         Hr.printTotalSalary(employeeList);
         
      // Requisito 3.12
+        System.out.println("\nQuantos salarios minimos ganha cada funcionários: \n"); 
+        Hr.printHowManySalarys(employeeList);
     }
 }
