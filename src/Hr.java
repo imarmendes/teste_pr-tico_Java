@@ -2,6 +2,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Hr {
 	public static ArrayList<Employee> createEmployeeList() {
@@ -78,13 +80,41 @@ public class Hr {
 			total = total.add(employee.getSalary());							
 		}
 		
-		System.out.printf("%.2f", total.floatValue());
+		System.out.printf("%.2f\n", total.floatValue());
 	}
 	
-	public static void printHowManySalarys(ArrayList<Employee> employeeList) {
+	public static void printHowManySalary(ArrayList<Employee> employeeList) {
 		for (Employee employee : employeeList) {
 			System.out.printf("O %s ganha %.2f salários minimos\n", employee.getName(), (employee.getSalary().floatValue() / 1212.0));							
 		}
 
 	}
+	
+	public static Map<String, ArrayList<Employee>> mapByFuntion(ArrayList<Employee> employeeList) {
+		Map<String, ArrayList<Employee>> map = new HashMap<String, ArrayList<Employee>>();
+		for (Employee employee : employeeList) {
+			if (map.get(employee.getFunction()) == null) {
+				ArrayList<Employee> list = new ArrayList<Employee>();
+				list.add(employee);
+				map.put(employee.getFunction(), list);
+			}
+			else {
+				ArrayList<Employee> list = new ArrayList<Employee>();
+				list = map.get(employee.getFunction());
+				list.add(employee);
+				map.put(employee.getFunction(), list);
+			}
+		}
+		return map;
+	}
+
+	public static void printMap(Map<String, ArrayList<Employee>> map) {
+		for (String key : map.keySet()) {
+			System.out.println(key + ":\n");
+			printEmployeeList(map.get(key));
+			System.out.println("\n");
+		}
+		
+	}
+	
 }
